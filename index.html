@@ -19,8 +19,8 @@
             <p>Water Monitoring</p>
         </div>
         <div class="status">
-            <span>TDS Monitoring</span>
-            <span>
+            <span style="display: inline-block; width: 110px;">TDS Monitoring</span>
+            <span style="display: inline-block; width: 440px;">
                 Time:
                 <div class="date">
                     12-12-2020, 19:00
@@ -29,7 +29,7 @@
                     12-12-2020, 19:00
                 </div>
             </span>
-            <span style="border-right: none;">
+            <span style="display: inline-block; border-right: none;">
                 Device Status:
                 <div class="device_status">
                     Online
@@ -42,48 +42,34 @@
                 <div class="title-layout">
                     TDS Monitoring Value
                 </div>
+                <div id="chart"></div>
             </div>
             <div class="vl"></div>
             <div class="tableVal">
                 <div class="table">
                     <div class="title-layout">
-                        <span>Date</span>
-                        <span style="margin-left: 190px;">Value</span>
+                        <span style=" display: inline-block; width: 40px;">No</span>
+                        <span style=" display: inline-block; width: 180px;">Date</span>
+                        <span style=" display: inline-block; width: 40px;">Value</span>
                     </div>
                     <div class="value">
                         <div class="val">
-                            <span>12 November 2020, 19:00</span>
-                            <span>40</span>
+                            <span style=" display: inline-block; width: 40px;">1</span>
+                            <span style=" display: inline-block; width: 184px;">12 November 2020, 19:00</span>
+                            <span style=" display: inline-block; width: 40px;">40</span>
                         </div>
                         <div class="val">
-                            <span>12 November 2020, 19:00</span>
-                            <span>40</span>
-                        </div>
-                        <div class="val">
-                            <span>12 November 2020, 19:00</span>
-                            <span>40</span>
-                        </div>
-                        <div class="val">
-                            <span>12 November 2020, 19:00</span>
-                            <span>40</span>
-                        </div>
-                        <div class="val">
-                            <span>12 November 2020, 19:00</span>
-                            <span>40</span>
-                        </div>
-                        <div class="val">
-                            <span>12 November 2020, 19:00</span>
-                            <span>40</span>
-                        </div>
-                        <div class="val">
-                            <span>12 November 2020, 19:00</span>
-                            <span>40</span>
+                            <span style=" display: inline-block; width: 40px;">2</span>
+                            <span style=" display: inline-block; width: 184px;">12 November 2020, 19:00</span>
+                            <span style=" display: inline-block; width: 40px;">40</span>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <script src="index.js"></script>
 </body>
 
 </html>

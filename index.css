@@ -9,6 +9,7 @@ body {
     font-family: Open Sans;
     font-style: normal;
     height: 100%;
+    font-size: 16px;
 }
 
 .header {
@@ -60,7 +61,7 @@ body {
     background: #F1F1F1;
     box-shadow: 0px 0px 2px 1px rgba(154, 154, 154, 0.5);
     border-radius: 8px;
-    padding: 13px 22px;
+    padding: 8px 22px;
     width: 90%;
     margin: 32px auto;
 }
@@ -71,7 +72,7 @@ body {
     padding-right: 16px;
 }
 
-span+span {
+.status span+span {
     padding-left: 16px;
 }
 
@@ -108,20 +109,21 @@ span+span {
     border-radius: 8px;
     width: 543px;
     height: 300px;
-    margin: 0px auto;
+    margin: 0px;
+    margin-left: 44px;
     margin-bottom: 30px;
     width: 90%;
-    padding: 0px 22px;
+    padding: 0px;
     display: grid;
     grid-row-gap: 1px;
-    grid-template-columns: 47.5% auto 52%;
+    grid-template-columns: 615px auto 640px;
 }
 
 .graph{
     background: #FFFFFF;
     box-shadow: 0px 0px 2px 1px rgba(154, 154, 154, 0.6);
     width: 100%;
-    margin-left: -22px;
+    /* margin-left: -22px; */
     border-radius: 8px;
     padding: 10px 0px;
     font-size: 18px;
@@ -136,13 +138,14 @@ span+span {
 
 .vl{
     border-right: 1px solid #C7C7C7;
-    width: 1px;
+    width: 14px;
+    margin-right: 14px;
 }
 
 .tableVal{
     overflow: visible;
     width: 100%;
-    margin-left: 20px;
+    /* margin-left: 20px; */
 }
 
 .table{
@@ -161,16 +164,15 @@ span+span {
     font-size: 12px;
 }
 
-.val span + span{
-    margin-left: 90px;
-}
+
 
 .val{
     margin-top: 10px;
-    padding-bottom: 5px;
+    padding-bottom: 5px; 
     border-bottom: 1px solid #C7C7C7;
 }
 
 .val:last-child{
     border: none;
 }
+
