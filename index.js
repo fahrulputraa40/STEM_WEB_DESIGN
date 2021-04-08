@@ -44,7 +44,23 @@ var data1 = [{
     },
     {
         ser1: new Date("2024-01-20T11:09:00"),
-        ser2: 6
+        ser2: 18
+    },
+    {
+        ser1: new Date("2024-01-21T11:09:00"),
+        ser2: 31
+    },
+    {
+        ser1: new Date("2024-01-22T11:09:00"),
+        ser2: 25
+    },
+    {
+        ser1: new Date("2024-01-23T11:09:00"),
+        ser2: 21
+    },
+    {
+        ser1: new Date("2024-01-25T11:09:00"),
+        ser2: 36
     }
 ];
 
@@ -161,7 +177,3 @@ function update(data, timeout = true) {
 }
 
 update(data1, false)
-
-setTimeout(() => {
-    update(data2)
-}, 5000);

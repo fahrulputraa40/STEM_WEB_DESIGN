@@ -10,6 +10,19 @@ body {
     font-style: normal;
     height: 100%;
     font-size: 16px;
+    position: relative;
+}
+
+.side{
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 300px;
+    height: 100%;
+    background-color: #282828;
+    padding: 15px 5px;
+    color: white;
+    z-index: 3;
 }
 
 .header {
@@ -41,16 +54,14 @@ body {
     font-style: normal;
     font-weight: normal;
     font-size: 18px;
-    line-height: 25px;
+    /* line-height: 25px; */
     position: relative;
+    display: flex;
+    align-items: center;
 }
 
-.title p {
-    position: absolute;
-    top: 50%;
-    left: 80px;
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
+.title span {
+    
 }
 
 .status {
@@ -129,7 +140,7 @@ body {
     font-size: 18px;
 }
 
-.graph > .title-layout, .table > .title-layout{
+.graph > .title-layout{
     border-bottom: 1px solid #C7C7C7;
     margin: auto;
     width: 95%;
@@ -145,7 +156,7 @@ body {
 .tableVal{
     overflow: visible;
     width: 100%;
-    /* margin-left: 20px; */
+    position: relative;
 }
 
 .table{
@@ -154,17 +165,17 @@ body {
     width: 100%;
     border-radius: 8px;
     padding: 10px 0px;
-    height: 80%;
+    height: 290px;
     font-size: 18px;
+    overflow: scroll;
 }
 
 .value{
     margin: auto;
     width: 95%;
     font-size: 12px;
+    padding-top: 35px;
 }
-
-
 
 .val{
     margin-top: 10px;
@@ -176,3 +187,29 @@ body {
     border: none;
 }
 
+.table-title{
+    position: fixed;
+    width: 600px;
+    border: none;
+    padding-left: 0px;
+    padding-top: 5px;
+    line-height: 30px;
+    margin-top: -10px;
+    margin-left: 15px;
+    border-bottom: 1px solid #C7C7C7;
+    background-color: white;
+}
+
+.update-table{
+    z-index: 2;
+    position: absolute;
+    padding: 10px;
+    border-radius: 6px;
+    text-align: center;
+    left: 25%;
+    top: 10px;
+    cursor: pointer;
+    transform: translateX(50%);
+    background-color: rgb(252, 255, 51);
+    box-shadow: 1px 1px 1px 1px rgba(154, 154, 154, 0.6);;
+}
