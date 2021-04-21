@@ -23,6 +23,7 @@ body {
     padding: 15px 5px;
     color: white;
     z-index: 3;
+    display: none;
 }
 
 .header {
@@ -167,7 +168,7 @@ body {
     padding: 10px 0px;
     height: 290px;
     font-size: 18px;
-    overflow: scroll;
+    overflow-y: scroll;
 }
 
 .value{
@@ -201,6 +202,7 @@ body {
 }
 
 .update-table{
+    display: none;
     z-index: 2;
     position: absolute;
     padding: 10px;

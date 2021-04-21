@@ -18,7 +18,7 @@
         </div>
         <div class="title">
             <span style="margin-left: 50px;">Water Monitoring</span>
-            <span><i style="padding-top: 6px; margin-left: 1100px; cursor: pointer;" class="fas fa-cog"></i></span>
+            <span onclick="sidePanel(true)"><i style="padding-top: 6px; margin-left: 1100px; cursor: pointer;" class="fas fa-cog"></i></span>
         </div>
         <div class="status">
             <span style="display: inline-block; width: 110px;">TDS Monitoring</span>
@@ -65,10 +65,10 @@
     <div class="side">
        <div style="padding-top: 5px;margin-bottom: 10px; height: 40px;" class="side-title">
         <h3 style="padding: 5px; display: inline; float: left;">Calibration</h3>
-        <h3 style="border-radius: 5px; border: 1px solid gray; padding: 5px 10px; display: inline; float: right; cursor: pointer;">x</h4>
+        <h3 onclick="sidePanel(false)" style="border-radius: 5px; border: 1px solid gray; padding: 5px 10px; display: inline; float: right; cursor: pointer;">x</h4>
         <div style="clear: both;"></div>
         </div>
-        <form action="#" method="get">
+        <form action="#" method="get" onclick="updateCalibration()">
             <label style="padding: 10px 0; margin-right: 4px;" for="cal">Calibration Value</label>
             <input style="padding: 2px 0;" type="text" name="cal" id="cal">
             <button style="cursor: pointer; width: 100%; padding: 4px; margin-top: 10px;display: block;" type="submit">Setting</button>

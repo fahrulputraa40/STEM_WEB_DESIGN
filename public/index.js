@@ -9,6 +9,15 @@ var margin = {
     height = 250 - margin.top - margin.bottom;
 const timeDuration = 1000;
 
+function sidePanel(state){
+    if(state){
+        document.querySelector(".side").style.display = 'block'
+    }
+    else{
+        document.querySelector(".side").style.display = 'none'
+    }
+}
+
 const svg = d3.select("#chart").append('svg')
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
@@ -174,6 +183,13 @@ function update(data, timeout = true) {
 
 
 
+}
+
+
+function updateCalibration() {
+    this.preventDefault();
+    console.log("aa")
+    console.log(this)
 }
 
 update(data1, false)
