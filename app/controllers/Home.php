@@ -32,7 +32,7 @@ class Home extends Controller{
         foreach ($row as &$value) {
             $count++;
         }
-        if($count > 10){
+        if($count > 49){
             $this->model('Monitoring')->delete($row[0]['id']);
         }
         $data = json_decode(file_get_contents("php://input"));
