@@ -103,6 +103,7 @@ function updateTable(data) {
     const date = document.getElementsByClassName('date')
 
     const dataLength = data.length
+    console.log(data[0])
     if(dataLength>0){
         date[0].innerHTML = data[0].ser1.toDateString();
         date[1].innerHTML = data[dataLength-1].ser1.toDateString();
@@ -113,26 +114,29 @@ function updateTable(data) {
         table.removeChild(table.childNodes[0])
     }
 
-    data.forEach((d, i) => {
+    for (let index = data.length -1; index >= 0; index--) {
+        d = data[index];
+        i = data.length - index - 1
         let no = document.createElement('span'),
-            date = document.createElement('span')
-            value = document.createElement('span'),
-            val = document.createElement('div');
-        value.style.display = date.style.display = no.style.display = 'inline-block';
-        value.style.width = no.style.width = '40px';
-        date.style.width = '184px'
+        date = document.createElement('span')
+        value = document.createElement('span'),
+        val = document.createElement('div');
+    value.style.display = date.style.display = no.style.display = 'inline-block';
+    value.style.width = no.style.width = '40px';
+    date.style.width = '184px'
 
-        no.innerHTML = i+1
-        date.innerHTML = d.ser1.toDateString()
-        value.innerHTML = d.ser2
+    no.innerHTML = i+1
+    date.innerHTML = d.ser1.toDateString() + " "+d.ser1.getHours()+":"+d.ser1.getMinutes()+":"+d.ser1.getSeconds()
+    value.innerHTML = d.ser2
 
-        val.className = 'val';
-        val.append(no);
-        val.append(date);
-        val.append(value);
+    val.className = 'val';
+    val.append(no);
+    val.append(date);
+    val.append(value);
 
-        table.appendChild(val)
-    });
+    table.appendChild(val)
+    }
+
 }
 
 
@@ -185,11 +189,37 @@ function update(data, timeout = true) {
 
 }
 
+function loadDoc() {
+var xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+    js = JSON.parse(this.responseText);
+    ar = [];
+    js.forEach(
+        (d)=>{
+            obj = JSON.parse(d); 
+            data = {};           
+            data.ser1 = new Date(obj.id);
+            data.ser2 = parseFloat(obj.tdsValue);
+            ar.push(data);
+        }
+    );
+    update(ar);
+    }
+};
+xhttp.open("GET", "http://localhost/public/Home/getAll", true);
+xhttp.send();
+}
 
+loadDoc();
 function updateCalibration() {
     this.preventDefault();
     console.log("aa")
     console.log(this)
 }
 
-update(data1, false)
+// update(data1, false)
+setInterval(() => {
+    
+loadDoc();
+}, 2000);
