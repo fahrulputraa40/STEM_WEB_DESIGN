@@ -218,7 +218,7 @@ xhttp.onreadystatechange = function() {
     update(ar);
     }
 };
-xhttp.open("GET", "http://localhost/public/Home/getAll", true);
+xhttp.open("GET", "http://helberiot.xyz/Home/getAll", true);
 xhttp.send();
 }
 
@@ -233,7 +233,7 @@ xhttp.onreadystatechange = function() {
         document.getElementById("tss-limit").value = js.tdsLimit
     }
 };
-xhttp.open("GET", "http://localhost/public/Home/getCallibration", true);
+xhttp.open("GET", "http://helberiot.xyz/Home/getCallibration", true);
 xhttp.send();
 };
 setCalibration();
@@ -295,7 +295,7 @@ document.getElementById("myAnchor").addEventListener("submit", function(event){
             }, 1500);
         }
     };
-    xhttp.open("GET", "http://localhost/public/home/calibration&cal="+cal+"&limit="+limit, true);
+    xhttp.open("GET", "http://helberiot.xyz/home/calibration&cal="+cal+"&limit="+limit, true);
     xhttp.send();
 });
 

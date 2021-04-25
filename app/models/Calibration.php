@@ -6,7 +6,7 @@ class Calibration{
     
     public $db;
     public function __construct(){
-        $this->db = new Database('localhost', 'root', '', 'monitoring');
+        $this->db = new Database('localhost', 'u672325722_fahrul', 'Roni7991', 'u672325722_helberdata');
     }
 
     public function getCalibrationAndLimit(){

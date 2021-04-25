@@ -6,7 +6,7 @@ class Monitoring{
     
     public $db;
     public function __construct(){
-        $this->db = new Database('localhost', 'root', '', 'monitoring');
+        $this->db = new Database('localhost', 'u672325722_fahrul', 'Roni7991', 'u672325722_helberdata');
     }
 
     public function getAll()
@@ -16,7 +16,7 @@ class Monitoring{
     }
 
     public function insert($tds){
-        $query = "INSERT INTO tds(id, tdsValue) VALUES (NOW(), '".$tds."')";
+        $query = "INSERT INTO tds(id, tdsValue) VALUES (ADDTIME(NOW(), '7:0:0'), '".$tds."')";
         $this->db->query($query);
         $this->db->execute();
         return $this->db->rowCount();
