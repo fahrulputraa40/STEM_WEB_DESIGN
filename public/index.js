@@ -8,6 +8,7 @@ var margin = {
     width = 600 - margin.left - margin.right,
     height = 250 - margin.top - margin.bottom;
 const timeDuration = 1000;
+var calibration_value = 0;
 
 function sidePanel(state){
     if(state){
@@ -103,11 +104,20 @@ function updateTable(data) {
     const date = document.getElementsByClassName('date')
 
     const dataLength = data.length
-    console.log(data[0])
     if(dataLength>0){
-        date[0].innerHTML = data[0].ser1.toDateString();
-        date[1].innerHTML = data[dataLength-1].ser1.toDateString();
-    } 
+        date[0].innerHTML = data[0].ser1.toDateString()+", "+data[0].ser1.getHours()+":"+data[0].ser1.getMinutes()+":"+data[0].ser1.getSeconds();
+        date[1].innerHTML = data[dataLength-1].ser1.toDateString()+", "+data[dataLength-1].ser1.getHours()+":"+data[dataLength-1].ser1.getMinutes()+":"+data[dataLength-1].ser1.getSeconds();;
+    }
+    const device_status = document.getElementsByClassName('device_status')[0]
+    if(Date.now() - data[dataLength-1].ser1 > 10000){
+        device_status.innerHTML = "Offline"
+        document.getElementsByClassName('bullet')[0].style.backgroundColor = 'red'
+    }
+    else{
+     device_status.innerHTML = "Online"
+     document.getElementsByClassName('bullet')[0].style.backgroundColor = 'green'
+    }
+    
 
     const l = table.childNodes.length    
     for (let index = 0; index < l; index++) {
@@ -190,15 +200,16 @@ function update(data, timeout = true) {
 }
 
 function loadDoc() {
-var xhttp = new XMLHttpRequest();
+let xhttp = new XMLHttpRequest();
 xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-    js = JSON.parse(this.responseText);
-    ar = [];
+        console.log(this.responseText)
+    let js = JSON.parse(this.responseText);
+    let  ar = [];
     js.forEach(
         (d)=>{
-            obj = JSON.parse(d); 
-            data = {};           
+            let  obj = JSON.parse(d); 
+            let  data = {};           
             data.ser1 = new Date(obj.id);
             data.ser2 = parseFloat(obj.tdsValue);
             ar.push(data);
@@ -212,14 +223,87 @@ xhttp.send();
 }
 
 loadDoc();
-function updateCalibration() {
-    this.preventDefault();
-    console.log("aa")
-    console.log(this)
-}
+
+let setCalibration = function (){
+let xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        let js = JSON.parse(this.responseText);
+        document.getElementById("cal").value = js.calVal
+        document.getElementById("tss-limit").value = js.tdsLimit
+    }
+};
+xhttp.open("GET", "http://localhost/public/Home/getCallibration", true);
+xhttp.send();
+};
+setCalibration();
+
+document.getElementById("myAnchor").addEventListener("submit", function(event){
+    event.preventDefault();
+    let cal = document.getElementById("cal").value; 
+    let limit = document.getElementById("tss-limit").value;
+    calibration_value = document.getElementById("cal").value;
+    let x = 10;
+
+    if(limit == "0" || limit.length == 0){
+        document.getElementById("res").style.display = "block";
+        document.getElementById("res").style.color = "white";
+        document.getElementById("res").innerHTML = "limit cannot null or 0";
+        setTimeout(() => {
+            document.getElementById("res").style.display = "none";
+        }, 1500);
+        return;
+    }
+    if(cal.length == 0){
+        document.getElementById("res").style.display = "block";
+        document.getElementById("res").style.color = "white";
+        document.getElementById("res").innerHTML = "calibration cannot null";
+        setTimeout(() => {
+            document.getElementById("res").style.display = "none";
+        }, 1500);
+        return;
+    }
+    try {
+        console.log(eval(calibration_value));
+    } catch (error) {
+        document.getElementById("res").style.display = "block";
+        document.getElementById("res").style.color = "white";
+        document.getElementById("res").innerHTML = "Marh equation errors";
+        setTimeout(() => {
+            document.getElementById("res").style.display = "none";
+        }, 1500);
+     return;
+    }
+    
+    let xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            console.log(this.responseText)
+            document.getElementById("res").style.display = "block";
+            document.getElementById("res").style.color = "white";
+            document.getElementById("res").innerHTML = "Calibration is changed";
+            setTimeout(() => {
+                document.getElementById("res").style.display = "none";
+            }, 1500);
+        }
+        else{
+            document.getElementById("res").style.display = "block";
+            document.getElementById("res").style.color = "white";
+            document.getElementById("res").innerHTML = "Connection Error";
+            setTimeout(() => {
+                document.getElementById("res").style.display = "none";
+            }, 1500);
+        }
+    };
+    xhttp.open("GET", "http://localhost/public/home/calibration&cal="+cal+"&limit="+limit, true);
+    xhttp.send();
+});
 
 // update(data1, false)
-setInterval(() => {
-    
-loadDoc();
-}, 2000);
+setTimeout( complexFunction, 4000 );
+
+function complexFunction() {
+  // complex code
+  loadDoc();
+  setTimeout( complexFunction, 4000 );
+}

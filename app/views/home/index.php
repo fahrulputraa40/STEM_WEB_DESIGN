@@ -21,8 +21,8 @@
             <span onclick="sidePanel(true)"><i style="padding-top: 6px; margin-left: 1100px; cursor: pointer;" class="fas fa-cog"></i></span>
         </div>
         <div class="status">
-            <span style="display: inline-block; width: 110px;">TDS Monitoring</span>
-            <span style="display: inline-block; width: 440px;">
+            <span style="display: inline-block; width: 110px;">TSS Monitoring</span>
+            <span style="display: inline-block; width: 580px;">
                 Time:
                 <div class="date">
                     12-12-2020, 19:00
@@ -42,7 +42,7 @@
         <div class="grid-layout">
             <div class="graph">
                 <div class="title-layout">
-                    TDS Monitoring Value
+                    TSS Monitoring Value
                 </div>
                 <div id="chart"></div>
             </div>
@@ -68,11 +68,19 @@
         <h3 onclick="sidePanel(false)" style="border-radius: 5px; border: 1px solid gray; padding: 5px 10px; display: inline; float: right; cursor: pointer;">x</h4>
         <div style="clear: both;"></div>
         </div>
-        <form action="#" method="get" onclick="updateCalibration()">
+        <form action="#" method="get" id="myAnchor">
             <label style="padding: 10px 0; margin-right: 4px;" for="cal">Calibration Value</label>
             <input style="padding: 2px 0;" type="text" name="cal" id="cal">
+            <div style="margin-top: 10px;">
+            <label style="padding: 10px 0; margin-right: 58px;" for="tss-limit">TSS limi</label>
+            <input style="padding: 2px 0;" type="text" name="tss-limit" id="tss-limit">
+            </div>
             <button style="cursor: pointer; width: 100%; padding: 4px; margin-top: 10px;display: block;" type="submit">Setting</button>
         </form>
+        <div id="res" style="margin-top: 10px; text-align: center; display: none">
+            Calibration is changed
+        </div>
+
     </div>
     <script src="https://d3js.org/d3.v6.min.js"></script>
     <script src="index.js"></script>
